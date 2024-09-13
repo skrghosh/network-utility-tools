@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Network Utility Tools</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center">Network Utility Tools</h1>
+    <!-- Navigation Tabs -->
+    <ul class="nav nav-tabs" id="toolTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="converter-tab" data-toggle="tab" href="#converter" role="tab" aria-controls="converter" aria-selected="true">IP Converter</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="subnet-tab" data-toggle="tab" href="#subnet" role="tab" aria-controls="subnet" aria-selected="false">Subnet Calculator</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="reverse-dns-tab" data-toggle="tab" href="#reverse-dns" role="tab" aria-controls="reverse-dns" aria-selected="false">Reverse DNS Lookup</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="ping-tab" data-toggle="tab" href="#ping" role="tab" aria-controls="ping" aria-selected="false">Ping Utility</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="toolTabsContent">
+        <!-- IP Converter Tab -->
+        <div class="tab-pane fade show active" id="converter" role="tabpanel" aria-labelledby="converter-tab">
+            <div class="converter mt-4 p-4 shadow-sm">
+                <div class="form-group">
+                    <label for="inputValue">Enter IP Address, Hexadecimal Value, Subnet Mask, or CIDR Notation:</label>
+                    <input type="text" class="form-control" id="inputValue" placeholder="e.g., 192.168.1.1, C0A80101, 255.255.255.0, /24">
+                </div>
+                <div class="form-group">
+                    <label>Select Conversion Type:</label><br>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="conversionType" id="ipToHex" value="ip_to_hex" checked>
+                        <label class="form-check-label" for="ipToHex">
+                            IP Address to Hexadecimal
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="conversionType" id="hexToIp" value="hex_to_ip">
+                        <label class="form-check-label" for="hexToIp">
+                            Hexadecimal to IP Address
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="conversionType" id="subnetMaskToCidr" value="subnetmask_to_cidr">
+                        <label class="form-check-label" for="subnetMaskToCidr">
+                            Subnet Mask to CIDR Notation
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="conversionType" id="cidrToSubnetMask" value="cidr_to_subnetmask">
+                        <label class="form-check-label" for="cidrToSubnetMask">
+                            CIDR Notation to Subnet Mask
+                        </label>
+                    </div>
+                </div>
+                <button id="convertBtn" class="btn btn-primary btn-block">Convert</button>
+                <div class="result mt-4">
+                    <h4>Result:</h4>
+                    <p id="resultText" class="lead"></p>
+                    <button id="copyResultBtn" class="btn btn-secondary btn-sm">Copy</button>
+                </div>
+            </div>
+        </div>
+        <!-- Subnet Calculator Tab -->
+        <div class="tab-pane fade" id="subnet" role="tabpanel" aria-labelledby="subnet-tab">
+            <div class="subnet-calculator mt-4 p-4 shadow-sm">
+                <div class="form-group">
+                    <label for="ipAddress">Enter IP Address:</label>
+                    <input type="text" class="form-control" id="ipAddress" placeholder="e.g., 192.168.1.0">
+                </div>
+                <div class="form-group">
+                    <label for="subnetMask">Enter Subnet Mask or CIDR Notation:</label>
+                    <input type="text" class="form-control" id="subnetMask" placeholder="e.g., 255.255.255.0 or /24">
+                </div>
+                <button id="calculateBtn" class="btn btn-primary btn-block">Calculate</button>
+                <div class="result mt-4">
+                    <h4>Subnet Information:</h4>
+                    <ul id="subnetResult" class="list-group"></ul>
+                    <button id="copySubnetBtn" class="btn btn-secondary btn-sm mt-2">Copy All</button>
+                </div>
+            </div>
+        </div>
+        <!-- Reverse DNS Lookup Tab -->
+        <div class="tab-pane fade" id="reverse-dns" role="tabpanel" aria-labelledby="reverse-dns-tab">
+            <div class="reverse-dns mt-4 p-4 shadow-sm">
+                <div class="form-group">
+                    <label for="reverseDnsInput">Enter IP Address:</label>
+                    <input type="text" class="form-control" id="reverseDnsInput" placeholder="e.g., 8.8.8.8">
+                </div>
+                <button id="reverseDnsBtn" class="btn btn-primary btn-block">Lookup</button>
+                <div class="result mt-4">
+                    <h4>Reverse DNS Result:</h4>
+                    <p id="reverseDnsResult" class="lead"></p>
+                    <button id="copyReverseDnsBtn" class="btn btn-secondary btn-sm">Copy</button>
+                </div>
+            </div>
+        </div>
+        <!-- Ping Utility Tab -->
+        <div class="tab-pane fade" id="ping" role="tabpanel" aria-labelledby="ping-tab">
+            <div class="ping-utility mt-4 p-4 shadow-sm">
+                <div class="form-group">
+                    <label for="pingInput">Enter IP Address or Hostname:</label>
+                    <input type="text" class="form-control" id="pingInput" placeholder="e.g., 8.8.8.8 or example.com">
+                </div>
+                <button id="pingBtn" class="btn btn-primary btn-block">Ping</button>
+                <div class="result mt-4">
+                    <h4>Ping Result:</h4>
+                    <pre id="pingResult" class="lead"></pre>
+                    <button id="copyPingBtn" class="btn btn-secondary btn-sm">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery, Popper.js, and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- Custom JS -->
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

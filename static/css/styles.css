@@ -1,0 +1,64 @@
+body {
+    /* Remove the solid background color */
+    background-color: #008c8c;
+    background-image: url('../images/subtle-pattern.png');
+    background-repeat: repeat;
+}
+
+h1 {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.converter, .subnet-calculator, .reverse-dns, .ping-utility {
+    background-color: rgba(0, 140, 140, 0.4); /* Match the background color */
+    border-radius: 8px;
+}
+
+#resultText, #reverseDnsResult, #pingResult {
+    color: #ffffff;
+}
+
+.list-group-item {
+    font-size: 16px;
+    background-color: rgba(0, 140, 140, 0.9);
+    color: #ffffff;
+    border: none;
+}
+
+.nav-tabs .nav-link {
+    color: #ffffff;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #00cccc; /* Slightly darker shade */
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+.btn-primary {
+    background-color: #005f5f;
+    border-color: #005f5f;
+}
+
+.btn-secondary {
+    background-color: #004747;
+    border-color: #004747;
+    margin-top: 10px;
+}
+
+.result button {
+    margin-top: 10px;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #000000;
+}
+
+.form-check-label, .form-check-input {
+    color: #ffffff;
+}
+
+.label, label {
+    color: #ffffff;
+}
