@@ -1,6 +1,7 @@
 import ipaddress
 import socket
 import ping3
+ping3.PRIVILEGED = False
 import streamlit as st
 import base64
 
@@ -107,7 +108,6 @@ def reverse_dns_lookup(ip_address):
 
 
 def ping_host(host):
-    import ping3  # Ensure we're using the correct ping3 module
     try:
         # Validate IP address or hostname
         try:
@@ -119,13 +119,12 @@ def ping_host(host):
             except socket.gaierror:
                 return {'error': 'Invalid IP address or hostname.'}
 
-        # Set privileged to False
-        response_time = ping3.ping(host, timeout=2, unit='ms', privileged=False)
+        response_time = ping3.ping(host, timeout=2, unit='ms')
         if response_time is None:
             return {'result': f'Host {host} is unreachable.'}
         else:
             return {'result': f'Reply from {host}: time={response_time:.2f} ms'}
-    except Exception as e:
+    except ping3.errors.PingError as e:
         return {'error': f'An error occurred: {str(e)}'}
 
 
