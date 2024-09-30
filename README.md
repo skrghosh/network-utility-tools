@@ -28,7 +28,7 @@ A comprehensive web-based toolkit for network engineers, system administrators, 
 
 ## Demo
 
-You can access a live demo of the application [here](#). *(Replace `#` with the URL if you deploy the app.)*
+You can access a live demo of the application [here](https://network-utility-tools-5n57vbum9qb9xyw3uk8wp8.streamlit.app/). 
 
 ## Installation
 
