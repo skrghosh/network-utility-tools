@@ -197,7 +197,7 @@ with tabs[2]:
 # Ping Utility Tab
 with tabs[3]:
     st.header("Ping Utility")
-    host = st.text_input("Enter IP Address or Hostname:", key="ping_host")
+    host = st.text_input("Enter IP Address or Hostname: (Streamlit blocks certain functionalities of the ping3 library. Ping Utility only works if the app is cloned from the Github and run locally)", key="ping_host")
     if st.button("Ping", key="ping_button"):
         if not host:
             st.error("Please enter an IP address or hostname.")
