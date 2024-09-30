@@ -1,7 +1,6 @@
 body {
-    /* Remove the solid background color */
     background-color: #008c8c;
-    background-image: url('../images/subtle-pattern.png');
+    background-image: url('https://i.imgur.com/FvWXvb1.png');
     background-repeat: repeat;
 }
 
@@ -31,7 +30,7 @@ h1 {
 }
 
 .nav-tabs .nav-link.active {
-    background-color: #00cccc; /* Slightly darker shade */
+    background-color: #00cccc;
     border-color: #dee2e6 #dee2e6 #fff;
 }
 

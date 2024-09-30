@@ -3,6 +3,7 @@ import socket
 from ping3 import ping
 import streamlit as st
 import base64
+
 # from streamlit_copyable_text import copyable_text
 
 
@@ -120,7 +121,8 @@ def ping_host(host):
             except socket.gaierror:
                 return {'error': 'Invalid IP address or hostname.'}
 
-        response_time = ping(host, timeout=2, unit='ms')
+        # Set privileged to False
+        response_time = ping(host, timeout=2, unit='ms', privileged=False)
         if response_time is None:
             return {'result': f'Host {host} is unreachable.'}
         else:
@@ -129,40 +131,14 @@ def ping_host(host):
         return {'error': f'An error occurred: {str(e)}'}
 
 
-def js_copy_button(text_to_copy, button_text):
-    """
-    Generates HTML and JavaScript to create a button that copies text to the clipboard.
-
-    Parameters:
-    - text_to_copy (str): The text to copy to the clipboard.
-    - button_text (str): The text to display on the button.
-
-    Returns:
-    - str: HTML and JavaScript code for the button.
-    """
-    copy_code = f"""
-    <button onclick="copyToClipboard('{text_to_copy}')" style='background-color:#004747;color:white;padding:8px 16px;border:none;border-radius:5px;cursor:pointer;margin-top:10px;'>{button_text}</button>
-    <script>
-    function copyToClipboard(text) {{
-        const el = document.createElement('textarea');
-        el.value = text;
-        document.body.appendChild(el);
-        el.select();
-        document.execCommand('copy');
-        document.body.removeChild(el);
-        alert('Copied to clipboard!');
-    }}
-    </script>
-    """
-    return copy_code
-
 # Create tabs
 tabs = st.tabs(["IP Converter", "Subnet Calculator", "Reverse DNS Lookup", "Ping Utility"])
 
 # IP Converter Tab
 with tabs[0]:
     st.header("IP Converter")
-    input_value = st.text_input("Enter IP Address, Hexadecimal Value, Subnet Mask, or CIDR Notation:", key="converter_input")
+    input_value = st.text_input("Enter IP Address, Hexadecimal Value, Subnet Mask, or CIDR Notation:",
+                                key="converter_input")
     conversion_type = st.radio(
         "Select Conversion Type:",
         (
