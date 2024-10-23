@@ -26,9 +26,6 @@ A comprehensive web-based toolkit for network engineers, system administrators, 
 - **Reverse DNS Lookup**: Find the domain name associated with an IP address.
 - **Ping Utility**: Check the reachability of a host by sending ICMP echo requests.
 
-## Demo
-
-You can access a live demo of the application [here](https://network-utility-tools-5n57vbum9qb9xyw3uk8wp8.streamlit.app/). 
 
 ## Installation
 
